@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import Error from './Error.jsx'
 import useSelectMonedas from '../hooks/useSelectMonedas'
-import {monedas} from '../data/monedas.js';
+import { monedas } from '../data/monedas.js';
 
 
 const InputSubmit = styled.input`
@@ -26,24 +26,24 @@ const InputSubmit = styled.input`
 `
 
 
-const Formulario = (setMonedas) => {
+const Formulario = ({ setMonedas }) => {
 
   const [criptos, setCriptos] = useState([])
   const [error, setError] = useState(false)
 
   const [moneda, SelectMonedas] = useSelectMonedas('Elige tu Moneda', monedas)
-  
+
   const [criptomoneda, SelectCriptomonedas] = useSelectMonedas('Elige tu Criptomoneda', criptos)
 
-  useEffect( () => {
+  useEffect(() => {
     const consultarAPI = async () => {
-      
+
       const url = "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD"
 
       const respuesta = await fetch(url);
       const resultado = await respuesta.json();
 
-      const arrayCriptos = respuesta.Data.map( cripto => {
+      const arrayCriptos = resultado.Data.map(cripto => {
         const objeto = {
           id: cripto.CoinInfo.Name,
           nombre: cripto.CoinInfo.FullName
@@ -55,16 +55,15 @@ const Formulario = (setMonedas) => {
 
 
     }
-    consultarAPI()
+    consultarAPI();
   }, [])
 
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    if([moneda, criptomoneda].includes('')){
+    if ([moneda, criptomoneda].includes('')) {
       setError(true);
-
       return
     }
 
@@ -81,25 +80,25 @@ const Formulario = (setMonedas) => {
 
     <>
 
-    {error && <Error>Todo los campos son obligatorios</Error>}
+      {error && <Error>Todo los campos son obligatorios</Error>}
 
-    <form
-      onSubmit={handleSubmit}
-    >
+      <form
+        onSubmit={handleSubmit}
+      >
 
-      <SelectMonedas/>
-      <SelectCriptomonedas/>
+        <SelectMonedas />
+        <SelectCriptomonedas />
 
-        <InputSubmit 
-            type="submit" 
-            value='Cotizar' 
+        <InputSubmit
+          type="submit"
+          value='Cotizar'
         />
 
-    </form>
-    
+      </form>
+
     </>
 
-    
+
   )
 }
 

@@ -49,26 +49,27 @@ function App() {
   const [resultado, setResultado] = useState({});
   const [cargando, setCargando] = useState(false);
 
-  useEffect (() => {
-    if(Object.keys(monedas).length > 0){
+  useEffect(() => {
+    if(Object.keys(monedas).length > 0) {
+        
       const cotizarCripto = async () => {
-        setCargando(true);
+          setCargando(true)
+          setResultado({})
 
-        const {moneda, criptomoneda} = moneda
-        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
+          const { moneda, criptomoneda } = monedas
+          const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
 
-        const respuesta  = await fetch(url);
-        const resultado = await respuesta.json();
+          const respuesta = await fetch(url)
+          const resultado = await respuesta.json()
 
-        setResultado(resultado.DISPLAY[criptomoneda][moneda]);
+          setResultado(resultado.DISPLAY[criptomoneda][moneda])
 
-        setCargando(false);
-
+          setCargando(false)
       }
 
-      cotizarCripto();
+      cotizarCripto()
     }
-  }, [monedas])
+}, [monedas])
 
   return (
     <Contenedor>
@@ -84,10 +85,7 @@ function App() {
         />
 
         {cargando && <Spinner/> }
-        { resultado.PRICE  && <Resultado resultado = {resultado}
-
-
-        />}
+        { resultado.PRICE  && <Resultado resultado = {resultado} />}
       </div>
 
 
