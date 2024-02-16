@@ -4,11 +4,21 @@ import styled from '@emotion/styled'
 const Contenedor = styled.div`
     color: #FFF;
     font-family: 'Lato', sans-serif;
-
+    background-color: #0040A2;
+    border-radius: 20px;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
     gap: 1rem;
-    margin-top: 30px
+    margin: 30px
+`
+
+const Header = styled.header`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
 `
 
 const Imagen = styled.img`
@@ -37,17 +47,22 @@ const Resultado = ({resultado}) => {
 
     return (
         <Contenedor>
+
+        <Header>
             <Imagen 
                 src={`https://cryptocompare.com/${IMAGEURL}`} 
                 alt="imagen cripto" 
             />
-            <div>
             <Precio>El precio es de <span>{PRICE}</span> </Precio>
+        </Header>
+
+            <div>
             <Texto>Precio mas alto del dia: <span>{HIGHDAY}</span> </Texto>
             <Texto>Precio mas bajo del dia: <span>{LOWDAY}</span> </Texto>
             <Texto>Variacion ultimas 24hs:  <span>{CHANGEPCT24HOUR}</span> </Texto>
             <Texto>Ultima Actualizacion <span>{LASTUPDATE}</span> </Texto>
             </div>
+
         </Contenedor>
     )
 }
