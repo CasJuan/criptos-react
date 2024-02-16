@@ -21,3 +21,6 @@ const Error = ({ children }) => {
         </Texto>
     )
 }
+
+
+export default Error
