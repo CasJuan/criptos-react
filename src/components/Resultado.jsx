@@ -53,14 +53,14 @@ const Resultado = ({resultado}) => {
                 src={`https://cryptocompare.com/${IMAGEURL}`} 
                 alt="imagen cripto" 
             />
-            <Precio>El precio es de <span>{PRICE}</span> </Precio>
+            <Precio>El precio es de:<span>{PRICE}</span> </Precio>
         </Header>
 
             <div>
-            <Texto>Precio mas alto del dia: <span>{HIGHDAY}</span> </Texto>
-            <Texto>Precio mas bajo del dia: <span>{LOWDAY}</span> </Texto>
-            <Texto>Variacion ultimas 24hs:  <span>{CHANGEPCT24HOUR}</span> </Texto>
-            <Texto>Ultima Actualizacion <span>{LASTUPDATE}</span> </Texto>
+            <Texto>Precio más alto del día: <span>{HIGHDAY}</span> </Texto>
+            <Texto>Precio más bajo del día: <span>{LOWDAY}</span> </Texto>
+            <Texto>Variación últimas 24 horas  <span>{CHANGEPCT24HOUR}</span> </Texto>
+            <Texto>Última actualización <span>{LASTUPDATE}</span> </Texto>
             </div>
 
         </Contenedor>

@@ -79,7 +79,7 @@ function App() {
         title='Imagen de Criptos'
       />
       <div>
-        <Heading>Cotiza Criptomonedas al Instante</Heading>
+        <Heading>Cotiza criptomonedas al instante</Heading>
         <Formulario
           setMonedas = {setMonedas}
         />

@@ -80,7 +80,7 @@ const Formulario = ({ setMonedas }) => {
 
     <>
 
-      {error && <Error>Todo los campos son obligatorios</Error>}
+      {error && <Error>Todos los campos son obligatorios.</Error>}
 
       <form
         onSubmit={handleSubmit}
